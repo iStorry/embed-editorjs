@@ -148,6 +148,10 @@ export default class Embed {
     caption.dataset.placeholder = this.api.i18n.t('Enter a caption');
     caption.innerHTML = this.data.caption || '';
 
+    if (this.readOnly && this.data.caption === '') {
+      caption.style.display = 'none';
+    }
+
     template.innerHTML = html;
     template.content.firstChild.setAttribute('src', this.data.embed);
     template.content.firstChild.classList.add(this.CSS.content);
